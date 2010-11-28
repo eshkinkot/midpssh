@@ -1,7 +1,7 @@
 /*
  * This file is part of "The Java Telnet Application".
  *
- * (c) Matthias L. Jugel, Marcus Meiﬂner 1996-2002. All Rights Reserved.
+ * (c) Matthias L. Jugel, Marcus Mei√üner 1996-2002. All Rights Reserved.
  * The file was changed by Radek Polak to work as midlet in MIDP 1.0
  *
  * Please visit http://javatelnet.org/ for updates and contact.

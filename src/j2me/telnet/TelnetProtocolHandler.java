@@ -1,7 +1,7 @@
 /*
  * This file is part of "The Java Telnet Application".
  *
- * (c) Matthias L. Jugel, Marcus Meiﬂner 1996-2002. All Rights Reserved.
+ * (c) Matthias L. Jugel, Marcus Mei√üner 1996-2002. All Rights Reserved.
  *
  * Please visit http://javatelnet.org/ for updates and contact.
  * The file was changed by Radek Polak to work as midlet in MIDP 1.0
@@ -35,10 +35,10 @@ import java.io.IOException;
  * several methods to handle the telnet options and to be able to read and write
  * the buffer.
  * <P>
- * <B>Maintainer: </B> Marcus Meiﬂner
+ * <B>Maintainer: </B> Marcus Mei√üner
  * 
  * @version $Id: TelnetProtocolHandler.java,v 1.1 2006/01/14 01:56:00 karl Exp $
- * @author Matthias L. Jugel, Marcus Meiﬂner
+ * @author Matthias L. Jugel, Marcus Mei√üner
  */
 public abstract class TelnetProtocolHandler {
 

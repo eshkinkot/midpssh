@@ -18,7 +18,7 @@ Floyd SSH and Telnet Floyd are ports of the Java(tm)
 Telnet/SSH Applet (javassh.org) to the MIDP platform.
 
 Floyd SSH and Telnet Floyd (and hence MidpSSH) includes
-sources from Matthias L. Jugel, Marcus Meiﬂner (javassh.org)
+sources from Matthias L. Jugel, Marcus Mei√üner (javassh.org)
 and also the GNU Classpath project.
 
 
