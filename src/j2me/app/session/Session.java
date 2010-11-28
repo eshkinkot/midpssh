@@ -210,20 +210,18 @@ public abstract class Session implements Activatable {
     		//#ifdef blackberry
     		customiseConnectionString(conn);
     		//#endif
-			boolean try_reconnect = false;
+			connection = null;
 			do {
 				try {
 					connection = (StreamConnection) Connector.open( conn.toString(), Connector.READ_WRITE, false );
-					try_reconnect = false;
 				}
 				catch ( IOException e ) {
 					if ( reconnect_count <= 0 )
 						throw e;
 					emulation.putString( String.valueOf(reconnect_count) + "." );
 					reconnect_count--;
-					try_reconnect = true;
 				}
-			} while ( try_reconnect );
+			} while ( connection == null );
 			in = connection.openDataInputStream();
 			out = connection.openDataOutputStream();
         }
