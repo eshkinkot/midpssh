@@ -447,7 +447,7 @@ public class SshIO {
 				//#endif
 			}
 		}
-		return result.getBytes();
+		return result.getBytes("UTF-8");
 	}
 
 	/**

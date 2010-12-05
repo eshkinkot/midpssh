@@ -149,7 +149,7 @@ public abstract class Session implements Activatable {
 	protected void receiveData( byte[] buffer, int offset, int length ) throws IOException {
 		if ( buffer != null && length > 0 ) {
 			try {
-				emulation.putString( new String( buffer, offset, length ) );
+				emulation.putString( new String( buffer, offset, length, "UTF-8" ) );
 			}
 			catch ( Exception e ) {
 
