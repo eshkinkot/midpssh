@@ -25,6 +25,8 @@
 
 package ssh;
 
+import java.io.UnsupportedEncodingException;
+
 abstract public class SshPacket {
 	public SshPacket() { /* nothing */
 	}
@@ -91,19 +93,11 @@ abstract public class SshPacket {
 		return (d0 << 8) + d1;
 	}
 
-	public String getString() {
+	public String getString() throws UnsupportedEncodingException {
 		int length = getInt32();
-
-		StringBuffer str = new StringBuffer();
-		for (int i = 0; i < length; i++) {
-			/*
-			 * if ( byteArray[offset] >= 0 ) str.append( (char) (
-			 * byteArray[offset++] ) ); else str.append( (char) ( 256 +
-			 * byteArray[offset++] ) );
-			 */
-			str.append((char) byteArray[offset++]);
-		}
-		return str.toString();
+		String str = new String(byteArray, offset, length, "UTF-8");
+		offset += length;
+		return str;
 	}
 
 	public byte[] getByteString() {
@@ -169,9 +163,10 @@ abstract public class SshPacket {
 	 * @param str:
 	 *            The string to be added.
 	 */
-	public void putString(String str) {
-		putInt32(str.length());
-		putBytes(str.getBytes());
+	public void putString(String str) throws UnsupportedEncodingException {
+		byte[] b = str.getBytes("UTF-8");
+		putInt32(b.length); // not characters, but bytes count
+		putBytes(b);
 	}
 
 	public void putString(byte[] foo) {

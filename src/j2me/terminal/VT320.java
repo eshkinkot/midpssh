@@ -27,7 +27,13 @@
 
 package terminal;
 
+import gui.MainMenu;
+
+import javax.microedition.lcdui.Alert;     // for encode error report
+import javax.microedition.lcdui.AlertType; //
+
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Implementation of a VT terminal emulation plus ANSI compatible.
@@ -647,8 +653,6 @@ public abstract class VT320 {
 		return terminalID;
 	}
 
-	private byte [] stringConversionBuffer = new byte[10];
-	
 	/**
 	 * A small conveniance method thar converts the string to a byte array for
 	 * sending.
@@ -659,23 +663,20 @@ public abstract class VT320 {
 	private boolean write( String s, boolean doecho ) {
 		if ( s == null ) // aka the empty string.
 			return true;
-		/*
-		 * NOTE: getBytes() honours some locale, it *CONVERTS* the string.
-		 * However, we output only 7bit stuff towards the target, and *some* 8
-		 * bit control codes. We must not mess up the latter, so we do hand by
-		 * hand copy.
-		 */
 
-		// Maybe extend writeBuffer
-		if ( stringConversionBuffer.length < s.length() ) {
-		    stringConversionBuffer = new byte[ s.length() ];
+		byte[] b = null;
+		try {
+			b = s.getBytes("UTF-8");
 		}
-		
-		// Fill writeBuffer
-		for ( int i = 0; i < s.length(); i++ ) {
-		    stringConversionBuffer[i] = (byte) s.charAt( i );
+		catch (UnsupportedEncodingException ex) {
+			Alert alert = new Alert( "Write encode error" );
+			alert.setType( AlertType.ERROR );
+			alert.setTimeout(Alert.FOREVER);
+			alert.setString( "to utf8: " + ex.toString() );
+			MainMenu.setDisplay( alert );
 		}
-		write( stringConversionBuffer, 0, s.length() );
+
+		write( b, 0, b.length );
 
 		if ( doecho )
 			putString( s );

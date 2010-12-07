@@ -119,7 +119,7 @@ public class Settings extends MyRecordStore {
 		//#ifdef midp2
 		terminalRotated = ROT_NORMAL;
 		//#endif
-		fontMode = FONT_NORMAL;
+		fontMode = FONT_DEVICE;
 		//#ifdef midp2
 		terminalFullscreen = false;
 		//#endif
