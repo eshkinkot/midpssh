@@ -163,9 +163,10 @@ abstract public class SshPacket {
 	 * @param str:
 	 *            The string to be added.
 	 */
-	public void putString(String str) {
-		putInt32(str.length());
-		putBytes(str.getBytes());
+	public void putString(String str) throws UnsupportedEncodingException {
+		byte[] b = str.getBytes("UTF-8");
+		putInt32(b.length); // not characters, but bytes count
+		putBytes(b);
 	}
 
 	public void putString(byte[] foo) {
