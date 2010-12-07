@@ -27,29 +27,29 @@
 		<property file="build-${mode}.properties" />
 	</target>
 
+	<path id="wtk.classpath.midp1">
+		<fileset dir="${wtk.home}">
+			<include name="lib/midp_1.0.jar" />
+			<include name="lib/cldc_1.0.jar" />
+		</fileset>
+	</path>
 	<target name="init-midp1" if="midp1">
 		<property name="wtk.midp.version" value="1.0" />
 		<property name="preprocess.symbols.midp" value="midp1" />
 
-		<path id="wtk.classpath.midp1">
-			<fileset dir="${wtk.home}">
-				<include name="lib/midpapi10.jar" />
-				<include name="lib/cldcapi10.jar" />
-			</fileset>
-		</path>
 		<property name="wtk.classpath" value="wtk.classpath.midp1" />
 	</target>
 
+	<path id="wtk.classpath.midp2">
+		<fileset dir="${wtk.home}">
+			<include name="lib/midp_2.0.jar" />
+			<include name="lib/cldc_1.0.jar" />
+		</fileset>
+	</path>
 	<target name="init-midp2" if="midp2">
 		<property name="wtk.midp.version" value="2.0" />
 		<property name="preprocess.symbols.midp" value="midp2" />
 
-		<path id="wtk.classpath.midp2">
-			<fileset dir="${wtk.home}">
-				<include name="lib/midpapi20.jar" />
-				<include name="lib/cldcapi10.jar" />
-			</fileset>
-		</path>
 		<property name="wtk.classpath" value="wtk.classpath.midp2" />
 	</target>
 
